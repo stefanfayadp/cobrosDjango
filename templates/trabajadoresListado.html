@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<br>
+  <div class="large-12 columns">
+    <h4><a href="/">Inicio</a> / Lista de Trabajadores</h4>
+    <table>
+      <thead>
+        <tr>
+          <th width="235">Id Trabajador</th>
+          <th width="235">Cedula Trabajador</th>
+          <th width="235">Nombre Trabajador</th>
+          <th width="235">Apellidos Trabajador</th>
+          <th width="235">Teléfono Trabajador</th>
+          <th width="235">Direccion Trabajador</th>
+          <th width="235">Tipo Acceso Trabajador</th>
+          <th width="235">Contraseña Trabajador</th>
+
+        </tr>
+      </thead>
+      <!-- IMPORTANT, class="list" have to be at tbody -->
+      <tbody class="list">
+        {% for trabajadores in Trabajadores %}
+        <tr>
+          <td><a href={{ request.get_host }}/trabajadores/{{trabajadores.idTrabajador}}>{{trabajadores.idTrabajador}}</a></td>
+          <td>{{trabajadores.cedulatr}}</td>
+          <td>{{trabajadores.nombretr}}</td>
+          <td>{{trabajadores.apellstr}}</td>
+          <td>{{trabajadores.teltr}}</td>
+          <td>{{trabajadores.direcciontr}}</td>
+          <td>{{trabajadores.tipoacc}}</td>
+          <td>{{trabajadores.password}}</td>
+          <td><a href={{ request.get_host }}/trabajadores_e/{{trabajadores.idTrabajador}}><div><button class="button tiny" >Eliminar</button></div></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

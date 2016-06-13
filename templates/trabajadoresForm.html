@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block contenido %}
+
+<div class="large-12 columns">
+  <h4><a href="/">Inicio</a> /Nuevo Trabajador</h4>
+  <div class=" panel large-12 columns">
+    <form enctype='multipart/form-data' action='' method="POST">
+      <div class="row">
+        <p style="text-align: center; color:#3667f7;"> <em> Datos generales</em></p>
+
+        <div class=" large-12 columns">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <label>Cedula Trabajador : {{form.cedulatr}}</label>
+          {% if form.cedulatr.errors %}
+            {% for error in form.cedulatr.errors %}
+              <small class="error"> {{ error|escape }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class="large-12 columns">
+          <label> Nombre Trabajador : {{form.nombretr}}</label>
+          {% if form.nombretr.errors %}
+            {% for error in form.nombretr.errors %}
+              <small class="error"> {{ error|escape }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class="large-12 columns">
+          <label>Apellidos Trabajador : {{form.apellstr}}</label>
+          {% if form.apellstr.errors %}
+            {% for error in form.apellstr.errors %}
+              <small class="error"> {{ error|escape }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        
+          <div class="large-6 columns">
+            <label> Telefono Trabajador: {{ form.teltr }}
+            </label>
+            {% if form.teltr.errors %}
+              {% for error in form.teltr.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <div class="large-6 columns">
+            <label> Direccion Trabajador: {{ form.direcciontr }}
+            </label>
+            {% if form.direcciontr.errors %}
+              {% for error in form.direcciontr.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <div class="large-6 columns">
+            <label> Tipo Acceso Trabajador: {{ form.tipoacc }}
+            </label>
+            {% if form.tipoacc.errors %}
+              {% for error in form.tipoacc.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <div class="large-6 columns">
+            <label> Contraseña Trabajador: {{ form.password }}
+            </label>
+            {% if form.password.errors %}
+              {% for error in form.password.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+
+      </div>
+      <br>
+      <div class="large-12 columns">
+        <input  style="background-color:#3667f7" class="button default" type='submit' value='Registrar Trabajador'/>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

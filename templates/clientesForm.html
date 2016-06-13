@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block contenido%}
+
+<div class="large-12 columns">
+  <h4><a href="/">Inicio</a> /Nuevo Cliente</h4>
+  <div class=" panel large-12 columns">
+    <form enctype='multipart/form-data' action='' method="POST">
+      <div class="row">
+        <p style="text-align: center; color:#3667f7;"> <em> Datos generales</em></p>
+
+        <div class=" large-12 columns">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <label>Cedula Cliente : {{form.cedula}}</label>
+          {% if form.cedula.errors %}
+            {% for error in form.cedula.errors %}
+              <small class="error"> {{ error|escape }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class="large-12 columns">
+          <label> Nombre Cliente : {{form.nombre}}</label>
+          {% if form.nombre.errors %}
+            {% for error in form.nombre.errors %}
+              <small class="error"> {{ error|escape }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class="large-12 columns">
+          <label>Apellidos Cliente : {{form.apells}}</label>
+          {% if form.apells.errors %}
+            {% for error in form.apells.errors %}
+              <small class="error"> {{ error|escape }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        
+          <div class="large-6 columns">
+            <label> Telefono Cliente: {{ form.tel }}
+            </label>
+            {% if form.tel.errors %}
+              {% for error in form.tel.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <div class="large-6 columns">
+            <label> Direccion Cliente: {{ form.direccion }}
+            </label>
+            {% if form.direccion.errors %}
+              {% for error in form.direccion.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+      </div>
+      <br>
+      <div class="large-12 columns">
+        <input  style="background-color:#3667f7" class="button default" type='submit' value='Registrar Cliente'/>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block contenido %}
+
+<br>
+  <div class="large-12 columns">
+    <h4><a href="/">Inicio</a> /Lista de Prestamos</h4>
+    <table>
+      <thead>
+        <tr>
+          <th width="235">Id Prestamo</th>
+          <th width="235">Id del Trabajador</th>
+          <th width="235">Cedula Cliente</th>
+          <th width="235">Monto Prestamo</th>
+          <th width="235">Numero de Dias</th>
+          <th width="235">Valor Diario</th>
+          <th width="235">Fecha de Inicio</th>
+          <th width="235">Fecha de Fin</th>
+          <th width="235">Estado del Prestamo</th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        {% for prestamos in Prestamos %}
+        <tr>
+          <td><a href={{ request.get_host }}/prestamos/{{prestamos.idPrestamo}}>{{prestamos.idPrestamo}}</a></td>
+          <td>{{prestamos.idTrabajador}}</td>
+          <td>{{prestamos.cedula}}</td>
+          <td>{{prestamos.monto}}</td>
+          <td>{{prestamos.numdias}}</td>
+          <td>{{prestamos.valordiario}}</td>
+          <td>{{prestamos.fechainicio}}</td>
+          <td>{{prestamos.fechafin}}</td>
+          <td>{{prestamos.estado}}</td>
+          <td><a href={{ request.get_host }}/prestamos_e/{{prestamos.idPrestamo}}><div><button class="button tiny" >Eliminar</button></div></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

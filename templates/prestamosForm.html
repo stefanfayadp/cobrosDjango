@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block contenido%}
+
+<div class="large-12 columns">
+  <h4><a href="/">Inicio</a> / Nuevo Prestamo</h4>
+  <div class=" panel large-12 columns">
+    <form enctype='multipart/form-data' action='' method="POST">
+      <div class="row">
+        <p style="text-align:center; color:#3667f7;"> <em> Datos Generales</em></p>
+
+        <div class=" large-12 columns">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <label>Id Trabajador : {{form.idTrabajador}}</label>
+          {% if form.idTrabajador.errors %}
+            {% for error in form.idTrabajador.errors %}
+            <small class="error">{{error|escape}}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class=" large-12 columns">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <label>Cedula Cliente : {{ form.cedula}}</label>
+          {% if form.cedula.errors %}
+            {% for error in form.cedula.errors %}
+            <small class="error">{{error|escape}}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class="large-12 columns">
+          <label>Monto Prestamo : {{form.monto}}</label>
+          {% if form.monto.errors %}
+            {% for error in form.monto.errors %}
+              <small class="error"> {{ error|escape }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        <div class="large-12 columns">
+          <label>Valor Diario : {{form.valordiario}}</label>
+          {% if form.valordiario.errors %}
+            {% for error in form.valordiario.errors %}
+              <small class="error"> {{ error|escape }}</small>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+
+  				<div class="large-12 columns">
+  					<label> Numero de Dias : {{ form.numdias }}
+  					</label>
+  					{% if form.numdias.errors %}
+  						{% for error in form.numdias.errors %}
+  							<small class="error">
+  								{{ error|escape }}
+  							</small>
+  						{% endfor %}
+  					{% endif %}
+  				</div>
+
+          <div class="large-6 columns">
+            <label> Fecha de Inicio: {{ form.fechainicio }}
+            </label>
+            {% if form.fechainicio.errors %}
+              {% for error in form.fechainicio.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <div class="large-6 columns">
+            <label> Fecha de Fin : {{ form.fechafin }}
+            </label>
+            {% if form.fechafin.errors %}
+              {% for error in form.fechafin.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <div class="large-12 columns">
+            <label> Estado del Prestamo: {{ form.estado }}
+            </label>
+            {% if form.estado.errors %}
+              {% for error in form.estado.errors %}
+                <small class="error">
+                  {{ error|escape }}
+                </small>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+
+      </div>
+      <br>
+     <div class="large-12 columns">
+       <input  style="background-color:#3667f7" class="button default " type='submit' value='Registrar Prestamo'/>
+     </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
